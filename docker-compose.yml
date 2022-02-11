@@ -1,0 +1,19 @@
+version: '3.9'
+
+services:
+  demoapp:
+    image: htetlinmaung/demoapp:1.0.0
+    ports:
+      - "8080:3000"
+  postgres:
+    image: postgres:alpine3.15
+    ports:
+      - "5433:5432"
+    environment:
+      - POSTGRES_DB=test
+      - POSTGRES_PASSWORD=User@123
+    volumes:
+      - postgresdb:/var/lib/postgresql/data
+
+volumes:
+  postgresdb:
